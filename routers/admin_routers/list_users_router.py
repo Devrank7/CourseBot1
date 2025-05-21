@@ -11,9 +11,13 @@ router = Router()
 @router.callback_query(F.data == "list_users")
 async def list_users(query: CallbackQuery, state: FSMContext):
     users = await run_sql(ReadUsersByRole([Roles.STUDENT]))
+    if len(users) == 0:
+        await query.answer("На данный момент не у одного пользователя нет доступа к курсам ⚠️", show_alert=True)
+        return
     markup = ListKeyboardMarkup(users, lambda user: f"@{user.username}", lambda user: user.username, "user_", True, 1).as_keyboard_markup()
     text = ("Список пользователей с доступом к курсам 🧾\n"
-            "Нажав на нужного пользователя вы можете просмотреть информацию о нем и закрыть его доступ к курсам")
+            "Нажав на нужного пользователя вы можете просмотреть информацию о нем и по необходимости"
+            " закрыть его доступ к курсам")
     await state.update_data(bt2=text)
     await state.update_data(br2=markup)
     await query.message.edit_text(text, reply_markup=markup)
@@ -32,7 +36,7 @@ async def user_info(query: CallbackQuery, state: FSMContext):
             '''
     markup = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="Закрыть доступ к курсам 🚫", callback_data=f"delete_user_{user.username}")],
-        [InlineKeyboardButton(text="🔙", callback_data="back_2")]
+        [InlineKeyboardButton(text="⬅️", callback_data="back_2")]
     ])
     await state.update_data(bt3=text)
     await state.update_data(br3=markup)

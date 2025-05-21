@@ -66,11 +66,12 @@ async def lection_by_id(query: CallbackQuery):
     if not lection:
         await query.answer("Видеоурок не найдена ❌", show_alert=True)
         return
-    file = FSInputFile(path=lection.get("path"))
     await query.message.delete()
     text = lection.get("name")
     markup = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="⬅️", callback_data=f"back_2")]
     ])
-    print("file:", file)
-    await query.message.answer_video(file, caption=text, protect_content=True, reply_markup=markup)
+    file_id = str(lection.get("file_id"))
+    print("file: ", file_id)
+    print("path: ", lection.get("path"))
+    await query.message.answer_video(file_id, caption=text, protect_content=True, reply_markup=markup)
