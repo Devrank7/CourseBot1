@@ -29,11 +29,13 @@ async def user_info(query: CallbackQuery, state: FSMContext):
     if user is None:
         await query.answer("Пользователь не найден ⚠️", show_alert=True)
         return
-    text = f'''Имя: {user.first_name}\n
-               Фамилия: {user.last_name}\n
-               Username: @{user.username}\n
-               {f"ID: {user.tg_id}\n" if user.tg_id != -1 else ""}
-            '''
+    text = (
+        f"Имя: {user.first_name}\n"
+        f"Фамилия: {user.last_name}\n"
+        f"Username: @{user.username}\n"
+    )
+    if user.tg_id != -1:
+        text += f"ID: {user.tg_id}\n"
     markup = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="Закрыть доступ к курсам 🚫", callback_data=f"delete_user_{user.username}")],
         [InlineKeyboardButton(text="⬅️", callback_data="back_2")]
