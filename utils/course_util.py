@@ -19,7 +19,7 @@ course_data = {
             "lections": [
                 {
                     "name": "הקדמה של קורס הכנה ללידה",
-                    "id": 1,
+                    "id": 0,
                     "path": "videos/module1/1.mp4",
                     "file_id": "BAACAgIAAxkBAAMjaC3r6NDuRlyIsx-HjC9XkfPa7MEAAuJ3AALbfXBJrWii38O9OAM2BA"
                 },
@@ -27,7 +27,7 @@ course_data = {
                     "name": "שיעור 1 - איך לנשום נכון",
                     "id": 1,
                     "path": "videos/module1/l1.mp4",
-                    "file_id": "BAACAgIAAxkBAAMfaC3pfdtNfJxpViWgC9XsfamJ4EYAAuxyAAJ1HXBJmOu78g-Vy-82BA"
+                    "file_id": "BAACAgIAAxkBAAP9aC4PpNM52AwTETzFgD1k5qbW-fIAAl96AALbfXBJ866RJQPXJ_Y2BA"
                 },
                 {
                     "name": "שיעור 2 - מה זה פרינאום",
