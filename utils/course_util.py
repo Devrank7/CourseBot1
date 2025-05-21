@@ -94,6 +94,12 @@ course_data = {
                     "path": "videos/module1/l12.mp4",
                     "file_id": "BAACAgIAAxkBAAM5aC3wA-DKiS87H-yWULMBIw5mb2wAAiZ4AALbfXBJoRZVnyXXZ6g2BA"
                 },
+                {
+                    "name": "קורס הכנה ללידה - פרסומת",
+                    "id": 13,
+                    "path": "videos/module2/l6.mp4",
+                    "file_id": "BAACAgIAAxkBAAIBo2guN5gIp3L6oNQ57FdCw5NgAAHJcwAC1XwAAtt9cElhi4P5MH4emzYE"
+                },
             ]
         },
         {
@@ -135,6 +141,12 @@ course_data = {
                     "id": 5,
                     "path": "videos/module2/l5.mp4",
                     "file_id": "BAACAgIAAxkBAANAaC3wyTk0-POTUHMqB_xe-_YWht0AAj14AALbfXBJ-wtCAAH9nc-1NgQ"
+                },
+                {
+                    "name": "פרסומת לקורס - לידה עם טפר על הרחם",
+                    "id": 6,
+                    "path": "videos/module2/l6.mp4",
+                    "file_id": "BAACAgIAAxkBAAIBoWguNo266Lq8kcunte2syFq2mWqHAALGfAAC231wSSfzndwq6Mh1NgQ"
                 },
             ]
         },
@@ -194,6 +206,12 @@ course_data1 = {
                     "id": 5,
                     "path": "videos/module2/l5.mp4",
                     "file_id": "BAACAgIAAxkBAANAaC3wyTk0-POTUHMqB_xe-_YWht0AAj14AALbfXBJ-wtCAAH9nc-1NgQ"
+                },
+                {
+                    "name": "קורס הכנה ללידה - פרסומת",
+                    "id": 6,
+                    "path": "videos/module2/l6.mp4",
+                    "file_id": "BAACAgIAAxkBAAIBo2guN5gIp3L6oNQ57FdCw5NgAAHJcwAC1XwAAtt9cElhi4P5MH4emzYE"
                 },
             ]
         },
@@ -277,6 +295,12 @@ course_data1 = {
                     "id": 12,
                     "path": "videos/module1/l12.mp4",
                     "file_id": "BAACAgIAAxkBAAM5aC3wA-DKiS87H-yWULMBIw5mb2wAAiZ4AALbfXBJoRZVnyXXZ6g2BA"
+                },
+                {
+                    "name": "פרסומת לקורס - לידה עם טפר על הרחם",
+                    "id": 13,
+                    "path": "videos/module2/l6.mp4",
+                    "file_id": "BAACAgIAAxkBAAIBoWguNo266Lq8kcunte2syFq2mWqHAALGfAAC231wSSfzndwq6Mh1NgQ"
                 },
             ]
         },
