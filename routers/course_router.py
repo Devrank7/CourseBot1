@@ -47,6 +47,19 @@ async def module_by_id(query: CallbackQuery, state: FSMContext):
     if not module:
         await query.answer("Курс не найден ❌", show_alert=True)
         return
+    lections = module.get("lections")
+    if len(lections) == 1:
+        lection = lections[0]
+        await query.message.delete()
+        text = lection.get("name")
+        markup = InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="⬅️", callback_data=f"back_1")]
+        ])
+        file_id = str(lection.get("file_id"))
+        print("file: ", file_id)
+        print("path: ", lection.get("path"))
+        await query.message.answer_video(file_id, caption=text, protect_content=True, reply_markup=markup)
+        return
     text = module.get("name")
     markup = [
         [InlineKeyboardButton(text=lection.get("name"), callback_data=f"lection_{module_id}_{lection.get('id')}")] for

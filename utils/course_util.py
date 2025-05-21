@@ -1,8 +1,8 @@
 course_data = {
-    "name": "Курсы по родЫам",
+    "name": "קורסי לידה🤰",
     "modules": [
         {
-            "name": "שיעורי מבוא לכל הקורסים",
+            "name": "הקדמה לכל הקורסים",
             "id": 0,
             "lections": [
                 {
