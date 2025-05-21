@@ -45,7 +45,7 @@ async def module_by_id(query: CallbackQuery, state: FSMContext):
     module_id = int(query.data.split("_")[1])
     module = get_module_by_id(module_id)
     if not module:
-        await query.answer("Курс не найден ❌", show_alert=True)
+        await query.answer("הקורס לא נמצא ❌", show_alert=True)
         return
     lections = module.get("lections")
     if len(lections) == 1:
@@ -77,7 +77,7 @@ async def lection_by_id(query: CallbackQuery):
     _, module_id, lection_id = query.data.split("_")
     lection = get_lection_by_id(int(module_id), int(lection_id))
     if not lection:
-        await query.answer("Видеоурок не найдена ❌", show_alert=True)
+        await query.answer("השיעור לא נמצא ❌", show_alert=True)
         return
     await query.message.delete()
     text = lection.get("name")

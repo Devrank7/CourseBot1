@@ -10,7 +10,7 @@ router = Router()
 router.include_router(add_user_router.router)
 router.include_router(delete_user_router.router)
 router.include_router(list_users_router.router)
-reason = "Вам доступ к админ панели запрещен 🔒"
+reason = "אין לך גישה לפאנל הניהול 🔒"
 router.message.middleware(MsgMiddleware(reason=reason))
 router.callback_query.middleware(CallbackMiddleware(reason=reason))
 
@@ -18,11 +18,11 @@ router.callback_query.middleware(CallbackMiddleware(reason=reason))
 @router.message(Command("admin"))
 async def admin(message: Message, state: FSMContext):
     markup = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Добавить нового пользователя к курсам 🔑", callback_data="add_user")],
-        [InlineKeyboardButton(text="Пользователи с доступом к курсам 📝", callback_data="list_users")],
+        [InlineKeyboardButton(text="הוספת משתמש חדש לקורסים 🔑", callback_data="add_user")],
+        [InlineKeyboardButton(text="משתמשים עם גישה לקורסים 📝", callback_data="list_users")],
     ])
-    text = ("Административная панель по управлению пользователями 🛡️ \n"
-            "Выберите действие: ")
+    text = ("פאנל ניהול משתמשים 🛡️ \n"
+            "בחר פעולה:")
     await state.update_data(bt1=text)
     await state.update_data(br1=markup)
     await message.answer(text, reply_markup=markup)
@@ -31,12 +31,12 @@ async def admin(message: Message, state: FSMContext):
 @router.callback_query(F.data == "admin_manage")
 async def admin_manage(query: CallbackQuery, state: FSMContext):
     markup = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Добавить пользователя 🔑", callback_data="add_user")],
-        [InlineKeyboardButton(text="Пользователи с доступом к курсам 📝", callback_data="list_users")],
+        [InlineKeyboardButton(text="הוספת משתמש חדש לקורסים 🔑", callback_data="add_user")],
+        [InlineKeyboardButton(text="משתמשים עם גישה לקורסים 📝", callback_data="list_users")],
         [InlineKeyboardButton(text="⬅️", callback_data="back_0")]
     ])
-    text = ("Административная панель по управлению пользователями 🛡️ \n"
-            "Выберите действие: ")
+    text = ("פאנל ניהול משתמשים 🛡️ \n"
+            "בחר פעולה:")
     await state.update_data(bt1=text)
     await state.update_data(br1=markup)
     await query.message.edit_text(text, reply_markup=markup)

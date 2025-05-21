@@ -7,7 +7,7 @@ from db.psql.enums.enums import Roles
 from db.psql.service import run_sql, ReadUserByUsername, CreateUser, UpdateUserName
 from utils.security_util import is_admin
 
-REASON = "Доступ к боту и предоставляемым курсам запрещен 🔒"
+REASON = "הגישה לבוט ולקורסים חסומה 🔒"
 class MsgMiddleware(BaseMiddleware):
 
     def __init__(self, reason: str = REASON, roles: list[Roles] = None):

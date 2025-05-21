@@ -12,12 +12,13 @@ router = Router()
 async def list_users(query: CallbackQuery, state: FSMContext):
     users = await run_sql(ReadUsersByRole([Roles.STUDENT]))
     if len(users) == 0:
-        await query.answer("На данный момент не у одного пользователя нет доступа к курсам ⚠️", show_alert=True)
+        await query.answer("כרגע אין אף משתמש עם גישה לקורסים ⚠️", show_alert=True)
         return
     markup = ListKeyboardMarkup(users, lambda user: f"@{user.username}", lambda user: user.username, "user_", True, 1).as_keyboard_markup()
-    text = ("Список пользователей с доступом к курсам 🧾\n"
-            "Нажав на нужного пользователя вы можете просмотреть информацию о нем и по необходимости"
-            " закрыть его доступ к курсам")
+    text = (
+        "רשימת המשתמשים עם גישה לקורסים 🧾\n"
+        "בלחיצה על משתמש תוכל לראות את פרטיו ואם צריך - לבטל את גישתו לקורסים."
+    )
     await state.update_data(bt2=text)
     await state.update_data(br2=markup)
     await query.message.edit_text(text, reply_markup=markup)
@@ -27,17 +28,17 @@ async def user_info(query: CallbackQuery, state: FSMContext):
     username = query.data.split("_")[1]
     user = await run_sql(ReadUserByUsername(username))
     if user is None:
-        await query.answer("Пользователь не найден ⚠️", show_alert=True)
+        await query.answer("המשתמש לא נמצא ⚠️", show_alert=True)
         return
     text = (
-        f"Имя: {user.first_name}\n"
-        f"Фамилия: {user.last_name}\n"
-        f"Username: @{user.username}\n"
+        f"שם פרטי: {user.first_name}\n"
+        f"שם משפחה: {user.last_name}\n"
+        f"שם משתמש: @{user.username}\n"
     )
     if user.tg_id != -1:
-        text += f"ID: {user.tg_id}\n"
+        text += f"מזהה טלגרם: {user.tg_id}\n"
     markup = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Закрыть доступ к курсам 🚫", callback_data=f"delete_user_{user.username}")],
+        [InlineKeyboardButton(text="לבטל גישה לקורסים 🚫", callback_data=f"delete_user_{user.username}")],
         [InlineKeyboardButton(text="⬅️", callback_data="back_2")]
     ])
     await state.update_data(bt3=text)

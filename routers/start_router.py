@@ -15,22 +15,22 @@ router.callback_query.middleware(CallbackMiddleware(roles=[Roles.ADMIN, Roles.ST
 
 def get_text(is_admin: bool):
     return f'''
-Привет! 👋
-Я бот, предоставляющий доступ к курсам по подготовке к родам.
+שלום! 👋
+אני בוט שמספק גישה לקורסים להכנה ללידה.
 
-В боте доступны 3 курса. Вы можете просмотреть их, нажав на кнопку "Мои курсы 📖" или введя команду /courses.
+ישנם 3 קורסים זמינים בבוט. ניתן לצפות בהם על ידי לחיצה על הכפתור "הקורסים שלי 📖" או על ידי הזנת הפקודה /courses.
 
-{'''Если вы администратор, для управления пользователями нажмите кнопку "Управление пользователями ⚙️" или введите команду /admin.
+{'''אם אתה מנהל, לניהול משתמשים לחץ על הכפתור "ניהול משתמשים ⚙️" או הזן את הפקודה /admin.
 
-В панели управления вы можете:
-– Выдать доступ к курсу по username  
-– Отозвать доступ к курсу  
-– Просмотреть список пользователей с доступом и информацию о них
+בלוח הניהול תוכל:
+– להעניק גישה לקורס לפי שם משתמש  
+– לבטל גישה לקורס  
+– לצפות ברשימת המשתמשים עם גישה ולקבל מידע עליהם
 
-🪶 Примечание:
-Чтобы вернуться в главное меню, введите /start — это может помочь, если вы застряли в навигации.''' if is_admin else ''}
+🪶 הערה:
+כדי לחזור לתפריט הראשי, הזן /start — זה עשוי לעזור אם אתה נתקע בניווט.''' if is_admin else ''}
 
-{"Приятного просмотра всех курсов! 💻🤰🏼" if not is_admin else "Приятного просмотра и управления доступами к курсам! 💻⚙️"}
+{"צפייה מהנה בכל הקורסים! 💻🤰🏼" if not is_admin else "צפייה וניהול גישה מהנים לקורסים! 💻⚙️"}
 '''
 
 
@@ -39,8 +39,8 @@ async def start(message: Message, user: User, state: FSMContext):
     await state.clear()
     buttons = InlineKeyboardBuilder()
     if user.roles == Roles.ADMIN:
-        buttons.button(text="Управление пользователями ⚙️", callback_data="admin_manage")
-    buttons.row(InlineKeyboardButton(text="Мои курсы 📖", callback_data="courses"))
+        buttons.button(text="ניהול משתמשים ⚙️", callback_data="admin_manage")
+    buttons.row(InlineKeyboardButton(text="הקורסים שלי 📖", callback_data="courses"))
     markup = buttons.as_markup()
     text = get_text(user.roles == Roles.ADMIN)
     await state.update_data(bt0=text)
