@@ -1,4 +1,4 @@
-course_data = {
+course_data1 = {
     "name": "קורסי לידה🤰",
     "modules": [
         {
@@ -152,7 +152,7 @@ course_data = {
         },
     ]
 }
-course_data1 = {
+course_data = {
     "name": "קורסי לידה🤰",
     "modules": [
         {

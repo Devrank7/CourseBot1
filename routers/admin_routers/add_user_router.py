@@ -14,15 +14,21 @@ class UserToAdd(StatesGroup):
 @router.callback_query(F.data == "add_user")
 async def add_user(query: CallbackQuery, state: FSMContext):
     await state.set_state(UserToAdd.username)
-    await query.message.edit_text("הכנס את שם המשתמש עם @ \n"
-                                  "לדוגמה: @abcd1234")
+    text = '''
+    הזן שם משתמש עם @
+"לדוגמה: @abcd1234"    
+אם למשתמש אין שם משתמש, בקשו ממנו להתחבר לפרופיל שלו ולספק את שם המשתמש הייחודי שלו.   
+    '''
+    await query.message.edit_text(text)
 
 @router.message(UserToAdd.username)
 async def add_user(message: Message, state: FSMContext):
     if message.text[0] != "@":
         await message.answer("שם המשתמש שהזנת שגוי ❌\n"
                              "נסה להזין שם משתמש שמתחיל ב-@ \n"
-                             "לדוגמה: @abcd1234")
+                             "לדוגמה: @abcd1234"
+                             "\n"
+                             "אם למשתמש אין שם משתמש, בקשו ממנו להתחבר לפרופיל שלו ולספק את שם המשתמש הייחודי שלו.")
         return
     username = message.text[1:]
     user = await run_sql(ReadUserByUsername(username))
