@@ -2,8 +2,50 @@ course_data = {
     "name": "קורסי לידה🤰",
     "modules": [
         {
-            "name": "הקדמה לכל הקורסים",
+            "name": "הספר היפנובירת'ינג",
             "id": 0,
+            "lections": [
+                {
+                    "name": "הספר היפנובירת'ינג",
+                    "id": 0,
+                    "path": "videos/introduction/in.mp4",
+                    "file_id": "BQACAgQAAxkBAAIC1mg4JlQx8e3n2domf7Vur-ceSpm5AAJ6GAACgj2wUcCw-u7fBRIdNgQ"
+                },
+            ]
+        },
+        {
+            "name": "פגישות ומדריכים מ-Eden Raya Dole",
+            "id": 1,
+            "lections": [
+                {
+                    "name": "מדריך להריון מושלם",
+                    "id": 0,
+                    "path": "videos/introduction/in.mp4",
+                    "file_id": "BQACAgQAAxkBAAIC7Wg4LdIJikOm9RDyA09NUWGsX5LiAAJ2GAACgj2wURpcLfgdmZANNgQ"
+                },
+                {
+                    "name": "הכול_על_למה_צריך_לקחת_דולה",
+                    "id": 1,
+                    "path": "videos/introduction/in.mp4",
+                    "file_id": "BQACAgQAAxkBAAIC7mg4LdKxpB9wO8BRN5jOIEZg1-IfAAJ3GAACgj2wUXohFFJTcDDyNgQ"
+                },
+                {
+                    "name": "פגישה שניה",
+                    "id": 2,
+                    "path": "videos/introduction/in.mp4",
+                    "file_id": "BQACAgQAAxkBAAIC72g4LdLRIuqc7X_THlImx2RgfljBAAJ4GAACgj2wUWK8owNZinNJNgQ"
+                },
+                {
+                    "name": "פגישה 3",
+                    "id": 3,
+                    "path": "videos/introduction/in.mp4",
+                    "file_id": "BQACAgQAAxkBAAIC8Gg4LdLimeRRPm7ZTUzyVia3UPbnAAJ8GAACgj2wUQ7j-JftN5LkNgQ"
+                },
+            ]
+        },
+        {
+            "name": "הקדמה לכל הקורסים",
+            "id": 2,
             "lections": [
                 {
                     "name": "הקדמה לכל הקורסים",
@@ -15,7 +57,7 @@ course_data = {
         },
         {
             "name": "פרטי: קורס האב התומך המושלם",
-            "id": 1,
+            "id": 3,
             "lections": [
                 {
                     "name": "שיעור 1 - נוכחות מלווה הלידה",
@@ -75,7 +117,7 @@ course_data = {
         },
         {
             "name": "קורס הכנה ללידה עם צלקת על הרחם",
-            "id": 2,
+            "id": 4,
             "lections": [
                 {
                     "name": "הקדמה של לידה עם צלקת על הרחם",
@@ -188,7 +230,7 @@ course_data = {
         },
         {
             "name": "קורס הכנה ללידה",
-            "id": 3,
+            "id": 5,
             "lections": [
                 {
                     "name": "הקדמה של קורס הכנה ללידה",
@@ -269,6 +311,30 @@ course_data = {
                 },
             ]
         },
+        {
+            "name": "עדן רעיה גורדג'י דולה ומעסה",
+            "id": 6,
+            "lections": [
+                {
+                    "name": "AffirmationsHebrew",
+                    "id": 0,
+                    "path": "videos/module1/l13.mp4",
+                    "file_id": "CQACAgQAAxkBAAIC4Wg4J8n3jXTivwABDgTqGGmxzQWsTwACgBgAAoI9sFHZSm2KA7SKAjYE"
+                },
+                {
+                    "name": "חזרה-ללידה",
+                    "id": 1,
+                    "path": "videos/module1/l13.mp4",
+                    "file_id": "CQACAgQAAxkBAAIC4mg4J8mZm0JWOTdj9uaju3shXr8eAAKKGAACgj2wUYHElD51Fpo0NgQ"
+                },
+                {
+                    "name": "הרפיה-עמוקה",
+                    "id": 2,
+                    "path": "videos/module1/l13.mp4",
+                    "file_id": "CQACAgQAAxkBAAIC42g4J8mAtCS8lwmox1YfgXB5_wWoAAKMGAACgj2wUdVGOXrBNgGfNgQ"
+                },
+            ]
+        }
     ]
 }
 course_data1 = {
