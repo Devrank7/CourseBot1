@@ -18,6 +18,6 @@ async def back(query: CallbackQuery, state: FSMContext):
     reply_data = data.get(f"br{index}")
     if query.message.text:
         await query.message.edit_text(text_data, reply_markup=reply_data)
-    elif query.message.video:
+    elif query.message.video or query.message.document or query.message.audio:
         await query.message.delete()
         await query.message.answer(text_data, reply_markup=reply_data)

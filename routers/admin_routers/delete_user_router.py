@@ -12,23 +12,23 @@ router = Router()
 async def delete_user(query: CallbackQuery):
     username = query.data.split("_")[2]
     markup = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Да", callback_data=f"rem_user_{username}")],
-        [InlineKeyboardButton(text="Нет", callback_data="back_3")]
+        [InlineKeyboardButton(text="כן", callback_data=f"rem_user_{username}")],
+        [InlineKeyboardButton(text="לא", callback_data="back_3")]
     ])
-    await query.message.edit_text("Вы уверены?", reply_markup=markup)
+    await query.message.edit_text("האם אתה בטוח?", reply_markup=markup)
 
 @router.callback_query(F.data.startswith("rem_user_"))
 async def remove_user(query: CallbackQuery, state: FSMContext):
     username = query.data.split("_")[2]
     await run_sql(UpdateUserRoleByUsername(username, Roles.USER))
-    await query.message.edit_text(f"Пользователь @{username} больше не имеет доступа к вашим курсам ❌")
+    await query.message.edit_text(f"הגישה של המשתמש @{username} לקורסים בוטלה ❌")
     markup = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Добавить пользователя 🔑", callback_data="add_user")],
-        [InlineKeyboardButton(text="Пользователи с доступом к курсам 📝", callback_data="list_users")],
+        [InlineKeyboardButton(text="הוספת משתמש חדש לקורסים 🔑", callback_data="add_user")],
+        [InlineKeyboardButton(text="משתמשים עם גישה לקורסים 📝", callback_data="list_users")],
         [InlineKeyboardButton(text="⬅️", callback_data="back_0")]
     ])
-    text = ("Административная панель по управлению пользователями 🛡️ \n"
-            "Выберите действие: ")
+    text = ("פאנל ניהול משתמשים 🛡️ \n"
+            "בחר פעולה:")
     await state.update_data(bt1=text)
     await state.update_data(br1=markup)
     await query.message.answer(text, reply_markup=markup)

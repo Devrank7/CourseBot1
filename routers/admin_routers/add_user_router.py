@@ -14,15 +14,21 @@ class UserToAdd(StatesGroup):
 @router.callback_query(F.data == "add_user")
 async def add_user(query: CallbackQuery, state: FSMContext):
     await state.set_state(UserToAdd.username)
-    await query.message.edit_text("Введите username пользователя c @ \n"
-                                  "Пример: @abcd1234")
+    text = '''
+    הזן שם משתמש עם @
+"לדוגמה: @abcd1234"    
+אם למשתמש אין שם משתמש, בקשו ממנו להתחבר לפרופיל שלו ולספק את שם המשתמש הייחודי שלו.   
+    '''
+    await query.message.edit_text(text)
 
 @router.message(UserToAdd.username)
 async def add_user(message: Message, state: FSMContext):
     if message.text[0] != "@":
-        await message.answer("Вы ввели не корректное имя пользователя ❌\n"
-                             "Попробуйте ввести username пользователя c @ \n"
-                                  "Пример: @abcd1234")
+        await message.answer("שם המשתמש שהזנת שגוי ❌\n"
+                             "נסה להזין שם משתמש שמתחיל ב-@ \n"
+                             "לדוגמה: @abcd1234"
+                             "\n"
+                             "אם למשתמש אין שם משתמש, בקשו ממנו להתחבר לפרופיל שלו ולספק את שם המשתמש הייחודי שלו.")
         return
     username = message.text[1:]
     user = await run_sql(ReadUserByUsername(username))
@@ -31,14 +37,14 @@ async def add_user(message: Message, state: FSMContext):
     else:
         await run_sql(UpdateUserRoleByUsername(username, Roles.STUDENT))
     await state.set_state(None)
-    await message.answer(f"Пользователю @{username} успешно выдан доступ к курсам ✅")
+    await message.answer(f"גישה לקורסים ניתנה בהצלחה למשתמש @{username} ✅")
     markup = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Добавить пользователя 🔑", callback_data="add_user")],
-        [InlineKeyboardButton(text="Пользователи с доступом к курсам 📝", callback_data="list_users")],
+        [InlineKeyboardButton(text="הוספת משתמש חדש לקורסים 🔑", callback_data="add_user")],
+        [InlineKeyboardButton(text="משתמשים עם גישה לקורסים 📝", callback_data="list_users")],
         [InlineKeyboardButton(text="⬅️", callback_data="back_0")]
     ])
-    text = ("Административная панель по управлению пользователями 🛡️ \n"
-            "Выберите действие: ")
+    text = ("פאנל ניהול משתמשים 🛡️ \n"
+            "בחר פעולה:")
     await state.update_data(bt1=text)
     await state.update_data(br1=markup)
     await message.answer(text, reply_markup=markup)

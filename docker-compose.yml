@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: telegram_bot_course
+    environment:
+      - BOT_TOKEN=8195595287:AAGnm7IvM6FK_wfr2G_9Z6H3piFitXsgJm0
+      - ADMIN_USERNAMES=admin,Tomashevssky,Dan1lll7,Rayadoula
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=course_db
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=boot
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: postgres:17
+    container_name: postgres_db
+    environment:
+      - POSTGRES_DB=course_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=boot
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+
+volumes:
+  pgdata:

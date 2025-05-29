@@ -34,6 +34,24 @@ async def handle_video(message: Message):
     print("filename: ", video.file_name)
     # Отправляем видео обратно пользователю
     await message.answer_video(video_file_id, caption="Вот твоё видео!")
+@dispatcher.message(F.document)
+async def handle_document(message: Message):
+    # Получаем объект видео
+    document = message.document
+    document_file_id = document.file_id
+    print("document_file_id: ", document_file_id)
+    print("filename: ", document.file_name)
+    # Отправляем видео обратно пользователю
+    await message.answer_video(document_file_id, caption="Вот твой документ!")
+@dispatcher.message(F.audio)
+async def handle_audio(message: Message):
+    # Получаем объект видео
+    audio = message.audio
+    audio_file_id = audio.file_id
+    print("audio_file_id: ", audio_file_id)
+    print("filename: ", audio.file_name)
+    # Отправляем видео обратно пользователю
+    await message.answer_video(audio_file_id, caption="Вот твое аудио!")
 @dispatcher.message(Command("send"))
 async def send(message: Message):
     file_id = 'BAACAgIAAxkBAAMSaC3P8c64okC5E0HNwKbr1_XKEXcAAo11AALbfXBJCFOpMpgAAS13NgQ'
